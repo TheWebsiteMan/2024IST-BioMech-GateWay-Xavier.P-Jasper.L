@@ -1,6 +1,5 @@
 # GateWay
 <br>
-
 ## High level pictorial
 
 
