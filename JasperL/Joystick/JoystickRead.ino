@@ -1,11 +1,3 @@
-/*
- * Created by ArduinoGetStarted.com
- *
- * This example code is in the public domain
- *
- * Tutorial page: https://arduinogetstarted.com/tutorials/arduino-joystick
- */
-
 #define VRX_PIN  A0 // Arduino pin connected to VRX pin
 #define VRY_PIN  A1 // Arduino pin connected to VRY pin
 
@@ -23,7 +15,8 @@
 int xValue = 0 ; // To store value of the X axis
 int yValue = 0 ; // To store value of the Y axis
 int command = COMMAND_NO;
-//int commandno = 0;
+
+
 void setup() {
   Serial.begin(9600) ;
 }
@@ -42,18 +35,12 @@ void loop() {
     command = command | COMMAND_LEFT;
   else if (xValue > RIGHT_THRESHOLD)
     command = command | COMMAND_RIGHT;
-  else 
-    command = command | COMMAND_NO;
-    //commandno = 1;
-
 
   // check up/down commands
   if (yValue < UP_THRESHOLD)
     command = command | COMMAND_UP;
   else if (yValue > DOWN_THRESHOLD)
     command = command | COMMAND_DOWN;
-  else //if (commandno = 1)
-    command = command | COMMAND_NO;
 
   // NOTE: AT A TIME, THERE MAY BE NO COMMAND, ONE COMMAND OR TWO COMMANDS
 
@@ -76,12 +63,5 @@ void loop() {
   if (command & COMMAND_DOWN) {
     Serial.println("COMMAND DOWN");
     // TODO: add your task here
-  
-  }
-
-  if (command & COMMAND_NO) {
-    Serial.println("COMMAND NO");
-    // TODO: add your task here
-  
   }
 }
