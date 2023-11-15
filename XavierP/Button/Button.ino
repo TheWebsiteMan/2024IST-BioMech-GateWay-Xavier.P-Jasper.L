@@ -13,7 +13,8 @@
 #define COMMAND_RIGHT  0x02
 #define COMMAND_UP     0x04
 #define COMMAND_DOWN   0x08
-
+#include <Keyboard.h>
+char ctrlKey = KEY_LEFT_CTRL;
 static unsigned int myButtonA = 2;
 static unsigned int myButtonB = 4;
 static unsigned int myButtonSt = 7;
@@ -28,10 +29,38 @@ void setup() {
   pinMode(myButtonB, INPUT);
   pinMode(myButtonSt, INPUT);
   pinMode(myButtonSe, INPUT);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(7, INPUT_PULLUP);
+  pinMode(8, INPUT_PULLUP);
+  Keyboard.begin();
 }
 
 void loop() {
-   // read analog X and Y analog values
+  if (digitalRead(2) == HIGH) {
+    Keyboard.press('z');
+  }
+  else {
+  Keyboard.release('z');
+  }
+  if (digitalRead(4) == HIGH) {
+    Keyboard.press('x');
+  }
+  else {
+  Keyboard.release('x');
+  }
+  if (digitalRead(7) == HIGH) {
+    Keyboard.press('c');
+  }
+  else {
+  Keyboard.release('c');
+  }
+  if (digitalRead(8) == HIGH) {
+    Keyboard.press('v');
+  }
+  else {
+  Keyboard.release('v');
+  }
   xValue = analogRead(VRX_PIN);
   yValue = analogRead(VRY_PIN);
 
