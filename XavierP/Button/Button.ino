@@ -25,6 +25,7 @@ int command = COMMAND_NO;
 
 void setup() {
   Serial.begin(9600);
+  Serial.print("working");
   pinMode(myButtonA, INPUT);
   pinMode(myButtonB, INPUT);
   pinMode(myButtonSt, INPUT);

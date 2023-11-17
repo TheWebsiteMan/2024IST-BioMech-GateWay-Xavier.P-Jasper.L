@@ -18,7 +18,8 @@ int command = COMMAND_NO;
 
 
 void setup() {
-  Serial.begin(9600) ;
+  Serial.begin(9600);
+  Serial.print("working");
 }
 
 void loop() {
