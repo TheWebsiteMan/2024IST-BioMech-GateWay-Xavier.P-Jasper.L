@@ -1,5 +1,5 @@
 #include <Keyboard.h>
-
+#include <Keyboard.cpp>
 // use this option for OSX:
 //char ctrlKey = KEY_LEFT_GUI;
 // use this option for Windows and Linux:
