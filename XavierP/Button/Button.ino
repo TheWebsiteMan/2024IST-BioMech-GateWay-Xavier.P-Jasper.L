@@ -13,8 +13,6 @@
 #define COMMAND_RIGHT  0x02
 #define COMMAND_UP     0x04
 #define COMMAND_DOWN   0x08
-#include <Keyboard.h>
-char ctrlKey = KEY_LEFT_CTRL;
 static unsigned int myButtonA = 2;
 static unsigned int myButtonB = 4;
 static unsigned int myButtonSt = 7;
@@ -25,7 +23,7 @@ int command = COMMAND_NO;
 
 void setup() {
   Serial.begin(9600);
-  Serial.print("working");
+  Serial.println("working");
   pinMode(myButtonA, INPUT);
   pinMode(myButtonB, INPUT);
   pinMode(myButtonSt, INPUT);
@@ -34,34 +32,9 @@ void setup() {
   pinMode(4, INPUT_PULLUP);
   pinMode(7, INPUT_PULLUP);
   pinMode(8, INPUT_PULLUP);
-  Keyboard.begin();
 }
 
 void loop() {
-  if (digitalRead(2) == HIGH) {
-    Keyboard.press('z');
-  }
-  else {
-  Keyboard.release('z');
-  }
-  if (digitalRead(4) == HIGH) {
-    Keyboard.press('x');
-  }
-  else {
-  Keyboard.release('x');
-  }
-  if (digitalRead(7) == HIGH) {
-    Keyboard.press('c');
-  }
-  else {
-  Keyboard.release('c');
-  }
-  if (digitalRead(8) == HIGH) {
-    Keyboard.press('v');
-  }
-  else {
-  Keyboard.release('v');
-  }
   xValue = analogRead(VRX_PIN);
   yValue = analogRead(VRY_PIN);
 
@@ -85,32 +58,38 @@ void loop() {
 
   // print command to serial and process command
   if (command & COMMAND_LEFT) {
-    Serial.println("COMMAND LEFT");
+    Serial.println("LEFT");
     // TODO: add your task here
   }
 
   if (command & COMMAND_RIGHT) {
-    Serial.println("COMMAND RIGHT");
+    Serial.println("RIGHT");
     // TODO: add your task here
   }
 
   if (command & COMMAND_UP) {
-    Serial.println("COMMAND UP");
+    Serial.println("UP");
     // TODO: add your task here
   }
 
   if (command & COMMAND_DOWN) {
-    Serial.println("COMMAND DOWN");
+    Serial.println("DOWN");
     // TODO: add your task here
   }
 
-  Serial.print("Buttons: A:");
-  Serial.print(digitalRead(myButtonA));
-  Serial.print(" B:");
-  Serial.print(digitalRead(myButtonB));
-  Serial.print(" St:");
-  Serial.print(digitalRead(myButtonSt));
-  Serial.print(" Se:");
-  Serial.println(digitalRead(myButtonSe));
+  if (digitalRead(myButtonA) == 1) {
+    Serial.println("A");
+  }
+
+  if (digitalRead(myButtonB) == 1) {
+    Serial.println("B");
+  }
+  if (digitalRead(myButtonSe) == 1) {
+    Serial.println("SELECT");
+  }
+  if (digitalRead(myButtonSt) == 1) {
+    Serial.println("START");
+  }
+
   delay(50);
 }
